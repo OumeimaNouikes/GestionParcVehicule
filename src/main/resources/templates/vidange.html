@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorate="layout">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Vidange</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
+</head>
+<body>
+<div layout:fragment="content">
+<div class="container my-2" align="center">
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
+
+    </ol>
+    <h3>vidange List</h3>
+    <div class="box-footer center">
+    <a th:href="@{/addnewvidange}"  >
+        <button type="button" class="btn btn-primary btn-sm mb-3"><i class="fa fa-plus"></i> Add new</button>
+    </a>
+    </div>
+    <table id="example1" class="table table-bordered table-striped dataTable" role="grid"
+           aria-describedby="example1_info">
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>date_vidange</th>
+            <th>index_vidange</th>
+            <th>huile</th>
+            <th>filtre_air</th>
+            <th>filtre_gaz</th>
+            <th>filtre_h</th>
+            <th>montant</th>
+            <th>vehicule</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="vidange:${allvidangelist}">
+            <td th:text="${vidange.idVidange}"></td>
+            <td th:text="${vidange.date_vidange}"></td>
+            <td th:text="${vidange.index_vidange}"></td>
+            <td th:text="${vidange.huile}"></td>
+            <td th:text="${vidange.filtre_air}"></td>
+            <td th:text="${vidange.filtre_gaz}"></td>
+            <td th:text="${vidange.filtre_h}"></td>
+            <td th:text="${vidange.montant}"></td>
+            <td th:text="${vidange.vehicule.immatriculation}"></td>
+
+            <td>
+                <a href="#" class="btn btn-primary btn-xs purple editView" title="Edit" th:href="@{/showFormForUpdateVidange/{id}(id=${vidange.idVidange})}"><i class="fa fa-edit"></i> Edit</a>
+
+                <a href="#" class="btn btn-danger btn-xs purple deleteView" title="Delete" th:href="@{/deleteVidange/{id}(id=${vidange.idVidange})}"><i class="fa fa-trash-o"></i> Delete</a>
+
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</div>
+<th:block layout:fragment="script">
+    <script>
+        $(function () {
+
+            $('#example1').DataTable({
+                'paging'      : true,
+                'lengthChange': false,
+                'searching'   : true,
+                'ordering'    : true,
+                'info'        : true,
+                'autoWidth'   : false
+            })
+
+            jQuery('#example1_wrapper input').addClass("form-control input-sm"); // modify table search input
+        })
+
+
+    </script>
+</th:block>
+</body>
+</html>

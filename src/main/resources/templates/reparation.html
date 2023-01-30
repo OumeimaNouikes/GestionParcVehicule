@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorate="layout">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Reparation</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
+</head>
+<body>
+<div layout:fragment="content">
+<ol class="breadcrumb">
+    <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
+
+</ol>
+
+<div class="container my-2" align="center">
+
+    <h3>Reparation List</h3>
+
+    <div class="box-footer center">
+    <a th:href="@{/addnewreparation}">
+        <button type="button" class="btn btn-primary btn-sm mb-3"><i class="fa fa-plus"></i> Add new</button>
+        </a>
+    </div>
+    <table id="example1" class="table table-bordered table-striped dataTable" role="grid"
+           aria-describedby="example1_info">
+        <thead>
+        <tr>
+            <th>idReparation</th>
+            <th>Date Reparation</th>
+            <th>Nature Reparation</th>
+            <th>date Mise En Service</th>
+            <th>Depenses</th>
+            <th>Vehicule</th>
+
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="reparation:${allreparationlist}">
+            <td th:text="${reparation.idReparation}"></td>
+            <td th:text="${reparation.dateRep}"></td>
+            <td th:text="${reparation.natureRep}"></td>
+            <td th:text="${reparation.dateMiseEnService}"></td>
+            <td th:text="${reparation.Depenses}"></td>
+            <td th:text="${reparation.vehicule.immatriculation}"></td>
+            <td th:text="${reparation.fournisseur}"></td>
+
+
+            <td>
+                <a href="#" class="btn btn-primary btn-xs purple editView" title="Edit" th:href="@{/showFormForUpdateReparation/{id}(id=${reparation.idReparation})}"><i class="fa fa-edit"></i> Edit</a>
+
+                <a href="#" class="btn btn-danger btn-xs purple deleteView" title="Delete"th:href="@{/deleteReparation/{id}(id=${reparation.idReparation})}"><i class="fa fa-trash-o"></i> Delete</a>
+
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</div>
+<th:block layout:fragment="script">
+    <script>
+        $(function () {
+
+            $('#example1').DataTable({
+                'paging'      : true,
+                'lengthChange': false,
+                'searching'   : true,
+                'ordering'    : true,
+                'info'        : true,
+                'autoWidth'   : false
+            })
+
+            jQuery('#example1_wrapper input').addClass("form-control input-sm"); // modify table search input
+        })
+
+
+    </script>
+</th:block>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorate="layout">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Entretien Pneu</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="container my-2" align="center">
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="/"><i class="fa fa-dashboard"></i> Home</a></li>
+
+        </ol>
+    </div>
+<div class="container my-2" align="center">
+
+    <h3>Entretien Pneu List</h3>
+    <a th:href="@{/addnewEntretienPneu}">
+        <button type="button" class="btn btn-primary btn-sm mb-3"><i class="fa fa-plus"></i> Add new</button>
+    </a>
+</div>
+    <table id="example1" class="table table-bordered table-striped dataTable" role="grid"
+           aria-describedby="example1_info">
+        <thead>
+        <tr>
+            <th>IdEntretien</th>
+            <th>ModelePneu</th>
+            <th>NbPneuChange</th>
+            <th>IndexChangementPneu</th>
+            <th>DateChangementPneu</th>
+            <th>Montant</th>
+
+            <th>Immatriculation Vehicule</th>
+            <th>Marque Vehicule</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="entretienPneu:${allEntretienPneulist}">
+            <td th:text="${entretienPneu.IdEntretien}"></td>
+            <td th:text="${entretienPneu.ModelePneu}"></td>
+            <td th:text="${entretienPneu.NbPneuChange}"></td>
+            <td th:text="${entretienPneu.IndexChangementPneu}"></td>
+            <td th:text="${entretienPneu.DateChangementPneu}"></td>
+            <td th:text="${entretienPneu.Montant}"></td>
+            <td th:text="${entretienPneu.vehicule.immatriculation}"></td>
+            <td th:text="${entretienPneu.vehicule.marque}"></td>
+
+            <td>
+                <a href="#" class="btn btn-primary btn-xs purple editView" title="Edit" th:href="@{/showFormForUpdateEntretienpneu/{id}(id=${entretienPneu.IdEntretien})}"><i class="fa fa-edit"></i> Edit</a>
+
+                <a href="#" class="btn btn-danger btn-xs purple deleteView" title="Delete" th:href="@{/deleteEntretienPneu/{id}(id=${entretienPneu.IdEntretien})}"><i class="fa fa-trash-o"></i> Delete</a>
+
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</div>
+<th:block layout:fragment="script">
+    <script>
+        $(function () {
+
+            $('#example1').DataTable({
+                'paging'      : true,
+                'lengthChange': false,
+                'searching'   : true,
+                'ordering'    : true,
+                'info'        : true,
+                'autoWidth'   : false
+            })
+
+            jQuery('#example1_wrapper input').addClass("form-control input-sm"); // modify table search input
+        })
+
+
+    </script>
+</th:block>
+</body>
+</html>

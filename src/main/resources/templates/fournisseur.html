@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Fournisseur</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
+
+</head>
+<body>
+<div  class="card-img" style="background-image: url('src/main/ressources/static/assets/menu.png')" ></div>
+<div class="container my-2" align="center">
+
+    <h3>Fournisseur List</h3>
+    <a th:href="@{/addnew}" class="btn btn-primary btn-sm mb-3" >Add Fournisseur</a>
+
+    <input type="search" class="light-table-filter" data-table="table-info" placeholder="Filter/Search">
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Nom</th>
+            <th scope="col">Adresse</th>
+            <th scope="col">Telphone</th>
+            <th scope="col">Actions</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="fournisseur:${allfournisseurlist}">
+            <td th:text="${fournisseur.nom}"></td>
+            <td th:text="${fournisseur.adresse}"></td>
+            <td th:text="${fournisseur.Telephone}"></td>
+            <td> <a th:href="@{/showFormForUpdate/{id}(id=${fournisseur.idFournisseur})}"
+                    class="btn btn-primary">Update</a>
+                <a th:href="@{/deleteFournisseur/{id}(id=${fournisseur.idFournisseur})}"
+                   class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+
+
+
+<script  src="src/main/resources/static/assets/asset/function.js"></script>
+</body>
+</html>

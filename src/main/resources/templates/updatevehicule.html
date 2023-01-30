@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Vehicule Management System</title>
+
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1>Vehicule Management System</h1>
+    <hr>
+    <h2>Update Vehicule</h2>
+
+    <form action="#" th:action="@{/savevehicule}" th:object="${vehicule}"
+          method="POST">
+
+        <input type="text" th:field="*{immatriculation}" placeholder="immatriculation"
+               class="form-control mb-4 col-4">
+        <input type="text" th:field="*{marque}" placeholder="marque"
+               class="form-control mb-4 col-4">
+        <input type="text" th:field="*{typeCarburant}" placeholder="typeCarburant"
+               class="form-control mb-4 col-4">
+        <input type="text" th:field="*{PuissanceFiscale}" placeholder="puissancefiscale"
+               class="form-control mb-4 col-4">
+        <input type="text" th:field="*{nb_places}" placeholder="nbPlaces"
+               class="form-control mb-4 col-4">
+
+
+
+        <button type="submit" class="btn btn-info col-2"> Update Vehicule</button>
+    </form>
+
+    <hr>
+
+    <a th:href = "@{/vehicule}"> Back to Vehicule List</a>
+</div>
+</body>
+</html>

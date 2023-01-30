@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorate="layout">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Vehicule Management System</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
+</head>
+<body>
+<div layout:fragment="content">
+<div class="container">
+    <h1>Vehicule Management System</h1>
+    <hr>
+    <h2>Save Vehicule</h2>
+
+    <form action="#" th:action="@{/savevehicule}" th:object="${vehicule}"
+          method="POST">
+        <div class="box-body">
+            <div class="form-group">
+        <label class="col-sm-2 control-label">immatriculation</label>
+                <div class="col-sm-10">
+        <input type="text" th:field="*{immatriculation}" placeholder="immatriculation"
+               class="form-control mb-4 col-4">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Marque</label>
+                <div class="col-sm-10">
+        <input type="text" th:field="*{marque}" placeholder="marque"
+               class="form-control mb-4 col-4">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">TypeCarburant</label>
+                <div class="col-sm-10">
+        <input type="text" th:field="*{typeCarburant}" placeholder="typeCarburant"
+               class="form-control mb-4 col-4">
+                </div>
+            </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">PuissanceFiscale</label>
+                    <div class="col-sm-10">
+        <input type="text" th:field="*{PuissanceFiscale}" placeholder="puissancefiscale"
+               class="form-control mb-4 col-4">
+                    </div>
+                </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">NbPlaces</label>
+                        <div class="col-sm-10">
+        <input type="text" th:field="*{nb_places}" placeholder="nbPlaces"
+               class="form-control mb-4 col-4">
+                        </div>
+                    </div>
+        </div>
+        <button type="button" class="btn btn-default"><i class="fa fa-right"></i> Cancel</button>
+        <button type="submit" class="btn btn-info pull-right"><i class="fa fa-save"></i> Save</button>
+
+
+    </form>
+
+    <hr>
+
+    <a th:href="@{/vehicule}"> Back to Vehicule List</a>
+</div>
+</div>
+</body>
+</html>

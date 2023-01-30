@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorate="layout">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Vidange Management System</title>
+
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+</head>
+<body>
+<div layout:fragment="content">
+<div class="container">
+    <h1>Vidange Management System</h1>
+    <hr>
+    <h2>Update Vidange</h2>
+
+    <form action="#" th:action="@{/savevidange}" th:object="${vidange}"
+          method="POST">
+
+        <input type="hidden" th:field="*{idVidange}" />
+
+        <label class="col-sm-2 control-label">date Vidange</label>
+        <input type="text" th:field="*{date_vidange}" placeholder="dateVidange"
+               class="form-control mb-4 col-4">
+        <label class="col-sm-2 control-label">Index Vidange</label>
+        <input type="text" th:field="*{index_vidange}" placeholder="indexVidange"
+               class="form-control mb-4 col-4">
+        <label class="col-sm-2 control-label">Huile</label>
+        <input type="text" th:field="*{huile}" placeholder="huile"
+               class="form-control mb-4 col-4">
+        <label class="col-sm-2 control-label">Filtre Air</label>
+        <input type="text" th:field="*{filtre_air}" placeholder="FiltreAir"
+               class="form-control mb-4 col-4">
+        <label class="col-sm-2 control-label">Filtre Gaz</label>
+        <input type="text" th:field="*{filtre_gaz}" placeholder="FiltreGaz"
+               class="form-control mb-4 col-4">
+        <label class="col-sm-2 control-label">Filtre H</label>
+        <input type="text" th:field="*{filtre_h}" placeholder="FiltreH"
+               class="form-control mb-4 col-4">
+        <label class="col-sm-2 control-label">Montant</label>
+        <input type="text" th:field="*{montant}" placeholder="Montant"
+               class="form-control mb-4 col-4">
+        <label class="col-sm-2 control-label">Immatriculation Vehicule</label>
+        <input type="text" th:field="*{vehicule}" placeholder="ImmatriculationVehicule"
+               class="form-control mb-4 col-4">
+
+
+
+        <button type="submit" class="btn btn-info col-2"> Update Vidange</button>
+    </form>
+
+    <hr>
+
+    <a th:href = "@{/vidange}"> Back to Vidange List</a>
+</div>
+</body>
+</html>
